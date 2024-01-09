@@ -95,6 +95,9 @@ $syne: "syne", serif;
                 font-family: $poppins;
               }
             }
+            @media (max-width: $mobile) {
+              width: 100%;
+            }
           }
         }
       }
@@ -114,7 +117,7 @@ $syne: "syne", serif;
   overflow: hidden;
 
   @media (max-width: $mobile) {
-    padding: 4rem 1rem;
+    padding: 1rem 1rem;
 
     &__wrapper {
       .explore-intro {
@@ -129,7 +132,7 @@ $syne: "syne", serif;
     margin: auto;
 
     .explore-intro {
-      margin: 4rem 0;
+      margin: 2rem 0;
       &__header {
         font-size: calc(64px / 16px) + rem;
         font-weight: 700;
@@ -148,7 +151,7 @@ $syne: "syne", serif;
       grid-template-columns: repeat(3, 1fr);
       margin-top: 3rem;
       margin-bottom: 3rem;
-
+      gap: 1rem;
       @media (max-width: $mobile) {
         grid-template-columns: 1fr;
 
@@ -235,7 +238,8 @@ $syne: "syne", serif;
         }
         .empower-text {
           width: 100%;
-          font-size: 18px;
+          font-size: 16px;
+          text-align: justify;
         }
 
         .empower-support {
@@ -326,6 +330,7 @@ $syne: "syne", serif;
       display: flex;
       align-items: center;
       justify-content: center;
+      border-radius: 10px;
       &:hover {
         border: 1px solid #beb489af;
       }
@@ -341,6 +346,7 @@ $syne: "syne", serif;
         p {
           color: #ffeabe;
           font-weight: 300;
+          margin-top: 0.7rem;
         }
       }
     }
@@ -356,6 +362,11 @@ $syne: "syne", serif;
           h1 {
             font-size: 28px;
             line-height: 1;
+          }
+
+          p {
+            font-size: 0.9rem;
+            text-align: justify;
           }
         }
       }

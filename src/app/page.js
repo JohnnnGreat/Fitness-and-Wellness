@@ -41,6 +41,22 @@ export default function Home() {
       },
       { threshold: 0.2 }
     );
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > prevScrollY) {
+        // Scrolling down
+        observer.observe(bodyRef.current);
+      } else {
+        // Scrolling up, ignore observation
+        observer.unobserve(bodyRef.current);
+      }
+
+      setPrevScrollY(currentScrollY);
+    };
+
+    // Attach scroll event listener
+    window.addEventListener("scroll", handleScroll);
 
     observer.observe(bodyRef.current);
   }, []);

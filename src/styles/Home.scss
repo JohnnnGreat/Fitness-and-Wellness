@@ -47,6 +47,7 @@ $syne: "syne", serif;
 
             &__desc {
               font-size: 1rem !important;
+              width: 100%;
             }
           }
         }
@@ -128,6 +129,7 @@ $syne: "syne", serif;
     margin: auto;
 
     .explore-intro {
+      margin: 4rem 0;
       &__header {
         font-size: calc(64px / 16px) + rem;
         font-weight: 700;
@@ -145,6 +147,7 @@ $syne: "syne", serif;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       margin-top: 3rem;
+      margin-bottom: 3rem;
 
       @media (max-width: $mobile) {
         grid-template-columns: 1fr;
@@ -169,6 +172,10 @@ $syne: "syne", serif;
     max-width: $max_width;
     margin: auto;
     padding: 2rem;
+
+    @media (max-width: $mobile) {
+      padding: 1rem;
+    }
 
     .empower-intro {
       margin-top: 1.2rem;
@@ -313,7 +320,7 @@ $syne: "syne", serif;
     margin-top: 1rem;
 
     &__container {
-      border: 1px solid #796c3a73;
+      border: 1px solid #a8a07e9a;
       padding: 2rem;
       height: 430px;
       display: flex;
@@ -341,7 +348,16 @@ $syne: "syne", serif;
       grid-template-columns: 1fr;
 
       &__container {
-        height: 380px;
+        height: auto;
+        width: 100%;
+        padding: 3rem 1rem;
+
+        div {
+          h1 {
+            font-size: 28px;
+            line-height: 1;
+          }
+        }
       }
     }
   }
@@ -396,6 +412,7 @@ $syne: "syne", serif;
   transition: 300ms ease;
   cursor: pointer;
   position: relative;
+
   &:hover {
     transition: 300ms ease;
     border: 1px solid #a1a1a1;
@@ -432,5 +449,15 @@ $syne: "syne", serif;
     position: absolute;
     bottom: 1rem;
     width: 90%;
+  }
+
+  @media (max-width: $mobile) {
+    height: auto;
+
+    a {
+      position: relative;
+      width: 100%;
+      bottom: 0;
+    }
   }
 }

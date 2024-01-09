@@ -39,7 +39,7 @@ export default function Home() {
           console.log(entry.isIntersecting);
         });
       },
-      { threshold: 0.2 }
+      { threshold: 0.4 }
     );
 
     observer.observe(bodyRef.current);

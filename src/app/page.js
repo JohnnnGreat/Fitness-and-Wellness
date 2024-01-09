@@ -1,113 +1,225 @@
-import Image from 'next/image'
+"use client";
+import Image from "next/image";
+import HeroImage from "../../public/HeroImage.jpg";
+import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
+import gsap from "gsap";
+import TextPlugin from "gsap/dist/TextPlugin";
+import ScrollTriger from "gsap/dist/ScrollTrigger";
+import ExploreContainer from "@/components/ExploreContainer";
+import { articleData, tipData } from "@/data";
+import { motion } from "framer-motion";
+
+gsap.registerPlugin(TextPlugin, ScrollTriger);
 
 export default function Home() {
+  const [onHover, setOnHover] = useState(false);
+
+  const textRef = useRef(null);
+  const bodyRef = useRef(null);
+
+  useEffect(() => {
+    gsap.to("span", {
+      text: {
+        text: "Wellness",
+        ease: "none",
+        type: "diff",
+      },
+      duration: 2,
+    });
+  });
+
+  const [isInView, setIsInView] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          setIsInView(entry.isIntersecting);
+          console.log(entry.isIntersecting);
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    observer.observe(bodyRef.current);
+  }, []);
+
+  const animation = {
+    initial: { y: "100%" },
+
+    enter: (i) => ({
+      y: "0",
+      transition: {
+        duration: 0.75,
+        ease: [0.33, 1, 0.68, 1],
+        delay: 0.075 * i,
+      },
+    }),
+  };
+  const headerText = ["Empower Your Fitness", "Journey with Expert Tip"];
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.js</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <>
+      <section className="hero">
+        <div className="hero__wrapper">
+          <div className="hero-grid">
+            <div className="hero-grid__first-section">
+              <div className="content">
+                <h1 className="content__header">
+                  Transform Your Life Through <span ref={textRef}>Health</span>{" "}
+                  and Fitness
+                </h1>
+
+                <p className="content__desc">
+                  Discover a journey to wellness and vitality with our expert
+                  insights, inspiring stories, and actionable tips. Embrace a
+                  healthier lifestyle and unlock the best version of yourself.
+                  Your path to fitness starts here.
+                </p>
+                <Link
+                  onMouseEnter={() => {
+                    setOnHover(true);
+                  }}
+                  onMouseLeave={() => {
+                    setOnHover(false);
+                  }}
+                  className="content__cta"
+                  href={"/"}
+                >
+                  <div>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke="currentColor"
+                      className={`w-6 h-6 ${onHover && "animate-svg"}`}
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25"
+                      />
+                    </svg>
+                    <p>Explore Now </p>
+                  </div>
+                </Link>
+              </div>
+            </div>
+            <div className="hero-grid__second-section">
+              <Image src={HeroImage} alt="Hero Image" />
+            </div>
+          </div>
         </div>
-      </div>
+      </section>
+      <section className="explore">
+        <div className="explore__wrapper">
+          <div className="explore-intro grid">
+            <motion.h1 className="explore-intro__header">
+              Explore Our Featured Articles
+            </motion.h1>
+            <p className="explore-intro__desc">
+              Delve into a treasure trove of health and fitness knowledge with
+              our carefully curated featured articles. From invigorating
+              workouts and nutritious recipes to mindfulness practices and
+              wellness insights, discover a wealth of information to guide you
+              on your journey to a healthier and happier life.
+            </p>
+          </div>
+          <div className="explore-article">
+            {articleData.map((article) => (
+              <ExploreContainer
+                keyValue={article.id}
+                title={article.title}
+                desc={article.desc}
+                img={article.img}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+      <section ref={bodyRef} id="empower" className="empower">
+        <section className="empower__wrapper">
+          <div className="empower-intro">
+            {headerText.map((text, index) => (
+              <>
+                <div className="text-mask">
+                  <motion.h1
+                    custom={index}
+                    variants={animation}
+                    initial="initial"
+                    animate={isInView ? "enter" : ""}
+                  >
+                    {text}
+                  </motion.h1>
+                </div>
+              </>
+            ))}
+            <p className="empower-text">
+              Unlock the secrets to a healthier, stronger you with our Fitness
+              Tips section. Whether you're a seasoned fitness enthusiast or just
+              starting your wellness journey, our expert tips provide valuable
+              insights to elevate your workout routine. From cardiovascular
+              exercises to strength-building at home, we've curated a collection
+              of actionable advice to guide you towards a fitter and more
+              vibrant lifestyle.
+            </p>
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+            <div className="empower-support">
+              <p>Need Support?</p>
+              <Link href={"contact"}>Contact Us</Link>
+            </div>
+          </div>
 
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
+          <div className="empower-img">
+            <div className="empower-img__container">
+              <Image src={HeroImage} alt="Hero Image" />{" "}
+            </div>
+            <div className="empower-img__btn">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="w-6 h-6"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M6.75 15.75 3 12m0 0 3.75-3.75M3 12h18"
+                />
+              </svg>
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800 hover:dark:bg-opacity-30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="w-6 h-6"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3"
+                />
+              </svg>
+            </div>
+          </div>
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
+          <div className="empower-tip">
+            {tipData.map((tip) => (
+              <div className="empower-tip__container">
+                <div>
+                  <h1>{tip.title}</h1>
+                  <p>{tip.text}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      </section>
+    </>
+  );
 }

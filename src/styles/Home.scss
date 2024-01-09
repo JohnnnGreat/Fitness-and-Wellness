@@ -17,7 +17,7 @@ $syne: "syne", serif;
     background: rgb(189, 189, 189);
   }
   @media (max-width: $mobile) {
-    padding: 4rem initial;
+    padding: 4rem 1rem;
     height: auto;
   }
 
@@ -26,6 +26,9 @@ $syne: "syne", serif;
     margin-left: auto;
     height: 100%;
 
+    @media (max-width: $mobile) {
+      margin: auto;
+    }
     .hero-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);

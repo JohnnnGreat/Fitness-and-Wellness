@@ -250,7 +250,7 @@ export default function Home() {
           </div>
         </section>
         <hr className="mt-[1.5rem]" />
-        <div className="nourish__details">
+        <div className="nourish__details ">
           <div className="recipes">
             <h1 className="nourish-text">
               <span>Recipe</span> of the Week
@@ -272,6 +272,30 @@ export default function Home() {
                 <div>
                   <Image src={require("../../public/Recipe.jpg")}></Image>
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="nourish__details nutrition">
+          <div className="recipes">
+            <h1 className="nourish-text">Nutrition Tip</h1>
+
+            <div className="nourish-grid">
+              <div className="tip-img">
+                <div>
+                  <Image src={require("../../public/tip.jpg")}></Image>
+                </div>
+              </div>
+              <div>
+                <h1>Balancing Macronutrients for Optimal Energy</h1>
+                <p>
+                  Discover the art of macronutrient balance – a key to
+                  sustaining energy levels throughout the day. Our nutrition tip
+                  breaks down the importance of balancing proteins,
+                  carbohydrates, and fats, offering practical insights to help
+                  you create meals that support your overall well-being.
+                </p>
+                <Link href="/">Read More</Link>
               </div>
             </div>
           </div>

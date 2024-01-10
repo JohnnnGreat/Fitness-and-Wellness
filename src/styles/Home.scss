@@ -1,7 +1,7 @@
 $primary_br: #866800;
 $text_clr: #2e2d2d;
 $accent: #b0a068;
-$max_width: 1200px;
+$max_width: 1100px;
 
 //Screens
 $mobile: 480px;
@@ -25,7 +25,7 @@ $syne: "syne", serif;
 
   &__wrapper {
     max-width: $max_width;
-    margin-left: auto;
+    margin: auto;
     height: 100%;
 
     @media (max-width: $mobile) {
@@ -377,8 +377,7 @@ $syne: "syne", serif;
 }
 
 .nourish {
-  height: 100vh;
-  background: #fff;
+  background: #f7f7f7;
   padding: 3rem 1rem;
 
   &__wrapper {
@@ -405,6 +404,23 @@ $syne: "syne", serif;
     }
   }
 
+  @media (max-width: $mobile) {
+    height: auto;
+    &__wrapper {
+      .nourish-intro {
+        h1 {
+          font-size: calc(45px / 16px) + rem;
+          max-width: 100%;
+        }
+
+        p {
+          font-size: 16px;
+          width: 100%;
+        }
+      }
+    }
+  }
+
   &__details {
     max-width: 900px;
     margin: auto;
@@ -426,6 +442,14 @@ $syne: "syne", serif;
         grid-template-columns: repeat(2, 1fr);
         gap: 2rem;
         margin: 2rem;
+        .tip-image {
+          div {
+            img {
+              border: 1px solid rgb(192, 192, 192);
+              border-radius: 10px;
+            }
+          }
+        }
         .recipe-img {
           display: flex;
           align-items: center;
@@ -478,6 +502,32 @@ $syne: "syne", serif;
           border-radius: 15px;
           color: #fff;
           border: 1px solid #fff;
+        }
+      }
+    }
+
+    @media (max-width: $mobile) {
+      padding: 0;
+      max-width: 100%;
+      .recipes {
+        .nourish-text {
+          font-size: 30px;
+          text-align: left;
+        }
+
+        .nourish-grid {
+          grid-template-columns: 1fr;
+          margin: 0;
+          margin-top: 2rem;
+          a {
+            width: 100%;
+            text-align: center;
+          }
+          .recipe-img {
+            div {
+              height: 400px;
+            }
+          }
         }
       }
     }
@@ -590,4 +640,8 @@ $syne: "syne", serif;
   position: fixed;
   top: 0;
   z-index: 3;
+}
+
+.nutrition {
+  margin-top: 1.4rem;
 }

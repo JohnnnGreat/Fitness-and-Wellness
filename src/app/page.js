@@ -18,16 +18,16 @@ export default function Home() {
   const textRef = useRef(null);
   const bodyRef = useRef(null);
 
-  useEffect(() => {
-    gsap.to("span", {
-      text: {
-        text: "Wellness",
-        ease: "none",
-        type: "diff",
-      },
-      duration: 2,
-    });
-  });
+  // useEffect(() => {
+  //   gsap.to("span", {
+  //     text: {
+  //       text: "Wellness",
+  //       ease: "none",
+  //       type: "diff",
+  //     },
+  //     duration: 2,
+  //   });
+  // });
 
   const [isInView, setIsInView] = useState(false);
 
@@ -154,9 +154,9 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section ref={bodyRef} id="empower" className="empower">
+      <section id="empower" className="empower">
         <section className="empower__wrapper">
-          <div className="empower-intro">
+          <div ref={bodyRef} className="empower-intro">
             {headerText.map((text, index) => (
               <>
                 <div className="text-mask">
@@ -235,6 +235,47 @@ export default function Home() {
             ))}
           </div>
         </section>
+      </section>
+      <section className="nourish">
+        <section className="nourish__wrapper">
+          <div className="nourish-intro">
+            <h1>Nourish Your Body, Fuel Your Life</h1>
+            <p>
+              Welcome to our Nutrition Corner, a dedicated space where we
+              explore the delicious intersection of health and taste. Dive into
+              a world of nutrient-rich choices, balanced meals, and culinary
+              delights that not only satisfy your taste buds but also nourish
+              your body from within.
+            </p>
+          </div>
+        </section>
+        <hr className="mt-[1.5rem]" />
+        <div className="nourish__details">
+          <div className="recipes">
+            <h1 className="nourish-text">
+              <span>Recipe</span> of the Week
+            </h1>
+
+            <div className="nourish-grid">
+              <div>
+                <h1>Quinoa and Veggie Buddha Bowl</h1>
+                <p>
+                  Indulge in a culinary masterpiece that not only tantalizes
+                  your taste buds but also packs a nutritional punch. Our Quinoa
+                  and Veggie Buddha Bowl is a delightful combination of protein,
+                  fiber, and essential nutrients, making it a perfect choice for
+                  a satisfying and health-conscious meal.
+                </p>
+                <Link href="/">Read More</Link>
+              </div>
+              <div className="recipe-img">
+                <div>
+                  <Image src={require("../../public/Recipe.jpg")}></Image>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
     </>
   );

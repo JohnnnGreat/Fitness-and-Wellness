@@ -10,9 +10,11 @@ $poppins: "Poppins", sans-serif;
 $syne: "syne", serif;
 //Hero Section
 .hero {
-  height: 100vh;
+  height: calc(100vh - 80px);
+  margin-top: 100px;
   overflow: hidden;
-  padding: 1rem;
+  padding: 0 1rem;
+
   ::selection {
     background: rgb(189, 189, 189);
   }
@@ -170,7 +172,7 @@ $syne: "syne", serif;
 .empower {
   background-image: linear-gradient($accent, #817341);
   margin-top: 2rem;
-
+  padding: 3.4rem 0;
   &__wrapper {
     max-width: $max_width;
     margin: auto;
@@ -374,6 +376,114 @@ $syne: "syne", serif;
   }
 }
 
+.nourish {
+  height: 100vh;
+  background: #fff;
+  padding: 3rem 1rem;
+
+  &__wrapper {
+    max-width: $max_width;
+    margin: auto;
+
+    .nourish-intro {
+      h1 {
+        font-family: $syne;
+        font-size: calc(64px / 16px) + rem;
+        line-height: 1;
+        font-weight: 700;
+        padding: 0;
+        max-width: 700px;
+      }
+
+      p {
+        color: $text_clr;
+        font-size: 20px;
+        margin-top: 1rem;
+        width: 90%;
+        font-weight: 200;
+      }
+    }
+  }
+
+  &__details {
+    max-width: 900px;
+    margin: auto;
+    padding: 2rem 1rem;
+
+    .recipes {
+      .nourish-text {
+        font-family: $syne;
+        font-size: 36px;
+        font-weight: 700;
+        text-align: center;
+        span {
+          color: $accent;
+        }
+      }
+
+      .nourish-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+        margin: 2rem;
+        .recipe-img {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          div {
+            position: relative;
+            width: 300px;
+            height: 500px;
+
+            &::before {
+              content: "";
+              width: 100%;
+              height: 90%;
+              background: #b0a068;
+              position: absolute;
+              left: -1rem;
+              top: 0;
+              margin-top: 1.5rem;
+            }
+          }
+
+          img {
+            width: 100%;
+            position: relative;
+            z-index: 3;
+            height: 100%;
+            top: 0;
+          }
+        }
+        h1 {
+          font-family: $poppins;
+          font-size: 24px;
+          font-weight: 600;
+          color: #242424;
+        }
+
+        p {
+          margin-top: 1rem;
+          font-weight: 200;
+          color: #242424;
+        }
+
+        a {
+          background: $accent;
+          display: inline-block;
+          margin-top: 1rem;
+
+          padding: 0.9rem 3rem;
+          border-radius: 15px;
+          color: #fff;
+          border: 1px solid #fff;
+        }
+      }
+    }
+  }
+}
+
 //Utils
 .animate-svg {
   transform: scale(0.5);
@@ -436,7 +546,7 @@ $syne: "syne", serif;
   }
 
   &__header {
-    font-size: 28px;
+    font-size: 25px;
     font-family: $syne;
     font-weight: 700;
     line-height: 1;
@@ -471,4 +581,13 @@ $syne: "syne", serif;
       bottom: 0;
     }
   }
+}
+
+.header {
+  width: 100%;
+  height: 80px;
+  border: 1px solid red;
+  position: fixed;
+  top: 0;
+  z-index: 3;
 }

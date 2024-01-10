@@ -4,7 +4,7 @@ import "./globals.css";
 import "../styles/Home.scss";
 import { useEffect } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
-
+import Header from "@/components/Header";
 const inter = Inter({ subsets: ["latin"] });
 
 // export const metadata = {
@@ -56,6 +56,7 @@ export default function RootLayout({ children }) {
         >
           <div></div>
         </motion.div>
+        <Header />
         <body className={inter.className}>{children}</body>
       </html>
     </>

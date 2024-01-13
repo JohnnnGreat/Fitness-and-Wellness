@@ -1,4 +1,5 @@
 "use client";
+import "aos/dist/aos.css";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import "../styles/Home.scss";
@@ -6,6 +7,7 @@ import { useEffect } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import Header from "@/components/Header";
 const inter = Inter({ subsets: ["latin"] });
+import AOS from "aos";
 
 // export const metadata = {
 //   title: "Create Next App",
@@ -43,6 +45,9 @@ export default function RootLayout({ children }) {
     return () => {
       window.removeEventListener("mousemove", manageMouseMove);
     };
+  }, []);
+  useEffect(() => {
+    AOS.init();
   }, []);
   return (
     <>

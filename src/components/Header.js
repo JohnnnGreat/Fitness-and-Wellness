@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { navDetails } from "@/data";
 import Link from "next/link";
 const Header = () => {
+  const [menuClicked, setMenuClicked] = useState(false);
   return (
     <div className="header">
       <div className="header__wrapper">
@@ -30,6 +31,15 @@ const Header = () => {
         <Link className="header-cta" href={"/"}>
           Start your journey
         </Link>
+        <div
+          className={`menu ${menuClicked && "startAnim"}`}
+          onClick={() => {
+            setMenuClicked(true);
+          }}
+        >
+          <div></div>
+          <div></div>
+        </div>
       </div>
     </div>
   );

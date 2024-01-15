@@ -416,11 +416,6 @@ export default function Home() {
               stroke="#A7A7A7"
             />
           </svg>
-
-          <Image
-            src={require("../../public/Newsletter.jpg")}
-            alt="Newletter "
-          />
           <div className="newsletters-details">
             <div>
               <h1>
@@ -438,7 +433,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section>sjiwjijwi</section>
     </>
   );
 }

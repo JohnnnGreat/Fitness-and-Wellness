@@ -51,3 +51,8 @@ export const navDetails = [
   { id: 5, navText: "About Us", navLink: "/" },
   { id: 6, navText: "Contact", navLink: "/" },
 ];
+export const quickLinks = [
+  { id: 1, navText: "Terms of Services", navLink: "/" },
+  { id: 2, navText: "Privacy Policy", navLink: "/" },
+  { id: 3, navText: "Disclaimer", navLink: "/" },
+];

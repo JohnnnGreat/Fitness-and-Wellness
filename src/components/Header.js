@@ -19,7 +19,30 @@ const Header = () => {
           </svg>
           <h1>FitVibeHub.</h1>
         </Link>
-        <nav>
+        <nav className={menuClicked && "open-nav"}>
+          <div
+            className="close"
+            onClick={() => {
+              setMenuClicked(false);
+            }}
+          >
+            {" "}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="w-6 h-6"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M6 18 18 6M6 6l12 12"
+              />
+            </svg>
+          </div>
+
           <ul>
             {navDetails.map((navItem) => (
               <li key={navItem.id}>
@@ -32,13 +55,26 @@ const Header = () => {
           Start your journey
         </Link>
         <div
-          className={`menu ${menuClicked && "startAnim"}`}
+          className="menu"
           onClick={() => {
+            console.log(menuClicked);
             setMenuClicked(true);
           }}
         >
-          <div></div>
-          <div></div>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="w-6 h-6"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+            />
+          </svg>
         </div>
       </div>
     </div>

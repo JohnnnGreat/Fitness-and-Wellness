@@ -3,11 +3,13 @@ import "aos/dist/aos.css";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import "../styles/Home.scss";
+import "../styles/Blog.scss";
 import { useEffect } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import Header from "@/components/Header";
 const inter = Inter({ subsets: ["latin"] });
 import AOS from "aos";
+import Footer from "@/components/Footer";
 
 // export const metadata = {
 //   title: "Create Next App",
@@ -63,6 +65,7 @@ export default function RootLayout({ children }) {
         </motion.div>
         <Header />
         <body className={inter.className}>{children}</body>
+        <Footer />
       </html>
     </>
   );

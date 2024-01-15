@@ -1,4 +1,24 @@
 .blog {
   padding: 1rem;
   overflow: hidden;
+
+  &__wrapper {
+    max-width: 1100px;
+    padding: 1rem;
+    margin: auto;
+    .b-image {
+      width: 100%;
+    }
+
+    .author {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+
+      img {
+        width: 50px;
+        height: 50px;
+      }
+    }
+  }
 }
